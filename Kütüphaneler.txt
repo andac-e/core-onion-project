@@ -1,0 +1,40 @@
+﻿Identity => Sizin için hazır yetkilendirme ve rol sisteminin Veritabanına Microsoft tarafından dahil edilmesidir... 
+
+Entities
+***
+Microsoft.AspNetCore.Identity => Identity işlemleri için indirmeniz gereken kütüphane Ve burada dikkat edin Core olmayan bir Identity Package'ini referans almamalısınız... 
+Microsoft.Extensions.Identity.Stores => NetCore MVC'den ve EF'ten bagımsız bir katmanda Core Identity yapısı kullanılacaksa Identity kütüphanesinin yanında Stores kütüphanesi'de indirilmeli... 
+
+--------------
+MAP
+***
+Microsoft.EntityFrameworkCore => EF işlemlerinin temeli bu kütüphaneden başlar... 
+Microsoft.EntityFrameworkCore.SqlServer => Core'da IEntityTypeConfiguration Interface'i içinde HasColumnName ve benzeri metotların gelebilmesi için ihtiyacımız olan kütüphanedir...
+
+--------------
+DAL
+***
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer => EF'in SqlServer işlemlerini yapabilmesi için
+Microsoft.EntityFrameworkCore.Tools => Migration işlemlerini terminalde yapmak için Tools kütüphanesine ihtiyacınız var
+Microsoft.AspNetCore.Identity.EntityFrameworkCore => IdentityDbContext dedigimiz yapı Identity kullandığımız için artık DbContext'in yerine geçmektedir. Onun gelebilmesi için de bu kütüphanenin indirilmesi gerekir... 
+Microsoft.EntityFrameworkCore.Proxies => LazyLoading ayarlamaları yapabilmek için... 
+
+--------------
+COMMON
+***
+Microsoft.AspNetCore.HTTP.Features => ISession tipini kullanmanızı sağlar...SessionExtension sınıfı için
+Microsoft.AspNetCore.HTTP.Extension => Common katmanında ISession tipinin SetString ve GetString metotlarına ulaşabilmenizi sağlar... 
+
+--------------
+BLL
+***
+Microsoft.AspNet.Identity => Identity service injection'ı için indirmemiz gereken kütüphane
+Microsoft.EntityFrameworkCore.SqlServer => Bizim SqlServerOption'larımızı inject edebilmemiz için gereken kütüphane
+System.Configuration.ConfigurationManager => Mevcut çalışan projenin configuration'ınına başka katmanlardan ulaşabilmek için indirmemiz gereken kütüphane
+
+--------------
+UI
+***
+Microsoft.EntityFrameworkCore.Design => Migration için Tools kütüphanesini DAL'da ekleyerek ayrı bir katmanda bunu yaptığımızdan dolayı o Tools'a istek verebilmesi için UI'ada bu Design kütüphanesinin indirilmesi gerekir.
+Microsoft.EntityFrameworkCore.SqlServer => Sql işlemlerinin yapılabilmesine olanak sağlar. 
